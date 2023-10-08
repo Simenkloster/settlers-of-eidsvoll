@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
 import Homepage from "./Pages/Homepage";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme";
 
 function App() {
 	return (
-		<div className="App">
+		<ThemeProvider theme={theme}>
 			<Homepage />
-		</div>
+		</ThemeProvider>
 	);
 }
 

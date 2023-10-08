@@ -4,5 +4,7 @@
 }
 
 body {
-	background-color: crimson;
+	background-image: url(".././public/bakgrunn.png");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
