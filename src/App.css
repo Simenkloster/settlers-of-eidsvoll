@@ -1,0 +1,8 @@
+@font-face {
+	font-family: "VollkornSC-Regular";
+	src: url("./Fonts/Vollkorn_SC/VollkornSC-Regular.ttf") format("truetype");
+}
+
+body {
+	background-color: crimson;
+}
