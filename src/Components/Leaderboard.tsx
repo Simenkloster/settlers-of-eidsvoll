@@ -30,16 +30,15 @@ const Leaderboard = (): ReactElement => {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{players.map((row, index) => (
+					{players.map((player, index) => (
 						<TableRow key={index}>
 							<TableCell component="th" scope="row">
 								{index + 1}
 							</TableCell>
-							<TableCell>{row.name}</TableCell>
-							<TableCell>{row.elo}</TableCell>
+							<TableCell>{player.name}</TableCell>
+							<TableCell>{player.elo}</TableCell>
 						</TableRow>
 					))}
-					;
 				</TableBody>
 			</Table>
 		</TableContainer>
