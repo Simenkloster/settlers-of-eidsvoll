@@ -1,8 +1,7 @@
 import React from "react";
 import "./Homepage.css";
 import Header from "../Components/Header";
-import Leaderboard from "../Components/Leaderboard";
-import theme from "../theme";
+import AddPlayer from "../Components/Addplayer";
 import Tile from "../Components/Tile";
 
 const Homepage = () => {
@@ -33,6 +32,7 @@ const Homepage = () => {
 					routing="/gamehistory"
 				/>
 				<Tile imageLink="Bricktile.png" text="Settings" routing="/settings" />
+				<AddPlayer />
 			</div>
 		</>
 	);

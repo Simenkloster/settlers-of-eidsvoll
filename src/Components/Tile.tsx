@@ -8,7 +8,6 @@ interface TileProps {
 }
 
 const Tile = (props: TileProps) => {
-	console.log(props);
 	return (
 		<div className="Tile">
 			<a href={props.routing}>
