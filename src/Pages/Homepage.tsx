@@ -1,15 +1,10 @@
-import React from "react";
 import "./Homepage.css";
 import Header from "../Components/Header";
-import AddPlayer from "../Components/Addplayer";
 import Tile from "../Components/Tile";
 
 const Homepage = () => {
 	return (
 		<>
-			<div className="headerContainer">
-				<Header />
-			</div>
 			<div className="TileContainer">
 				<Tile
 					imageLink="Sheeptile.png"
@@ -18,12 +13,12 @@ const Homepage = () => {
 				/>
 				<Tile
 					imageLink="Oretile.png"
-					text="Leaderboard"
+					text="Register game"
 					routing="/leaderboard"
 				/>
 				<Tile
 					imageLink="Wheattile.png"
-					text="Register game"
+					text="Leaderboard"
 					routing="/registergame"
 				/>
 				<Tile
@@ -32,7 +27,6 @@ const Homepage = () => {
 					routing="/gamehistory"
 				/>
 				<Tile imageLink="Bricktile.png" text="Settings" routing="/settings" />
-				<AddPlayer />
 			</div>
 		</>
 	);

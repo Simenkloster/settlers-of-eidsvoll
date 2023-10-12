@@ -4,7 +4,7 @@ import "./Header.css";
 const Header = () => {
 	return (
 		<h1>
-			<a href="Home" className="effect-shine">
+			<a href="/" className="effect-shine">
 				Settlers of Eidsvoll
 			</a>
 		</h1>
