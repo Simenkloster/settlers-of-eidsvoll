@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Game from "../Types/Game";
 import AddPlayer from "../Components/Addplayer";
 import { useState } from "react";
+import ValidateGame from "../Validators/ValidateGame";
+import usePlayers from "../Hooks/usePlayers";
 
 const RegisterGame = () => {
 	const [game, setGame] = React.useState<Game>();
@@ -14,11 +16,16 @@ const RegisterGame = () => {
 		})
 	);
 
+	const players = usePlayers();
 	const [playerData, setPlayerData] = useState(defaultPlayerData);
 
 	const handleGameSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		console.log(playerData);
+		if (ValidateGame(playerData, players.players)) {
+			console.log("Valid game");
+		} else {
+			console.log("Invalid game. Make sure ");
+		}
 	};
 
 	const handleScoreChange = (score: number, index: number) => {
@@ -47,7 +54,15 @@ const RegisterGame = () => {
 
 	return (
 		<>
-			<div className="radiobuttons">
+			<div
+				className="radiobuttons"
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "space-evenly",
+					fontSize: "1.5rem",
+				}}
+			>
 				<label>
 					<input
 						type="radio"
@@ -70,6 +85,7 @@ const RegisterGame = () => {
 				</label>
 			</div>
 			<br></br>
+			<br></br>
 
 			<form onSubmit={handleGameSubmit}>
 				{Array.from(Array(numberOfPlayers).keys()).map((i) => (
@@ -78,15 +94,13 @@ const RegisterGame = () => {
 							key={i}
 							onScoreChange={(score) => handleScoreChange(score, i)}
 							onPlayerChange={(player) => handlePlayerChange(player, i)}
+							players={players.players}
 						/>
 						<br></br>
 						<br></br>
 					</>
 				))}
 				<button type="submit">Registrer spill</button>
-				<button type="reset" onClick={() => setPlayerData(defaultPlayerData)}>
-					Reset
-				</button>
 			</form>
 		</>
 	);
