@@ -1,6 +1,5 @@
 import React from "react";
 import "./Leaderboard.css";
-import TestPlayers from "../TestObjects/TestPlayers";
 import {
 	Table,
 	TableContainer,
@@ -10,16 +9,14 @@ import {
 	TableRow,
 	Paper,
 } from "@mui/material";
-import { ReactElement } from "react";
 import "./Leaderboard.css";
-import { Form } from "react-router-dom";
+import Player from "../Types/Player";
 
-const Leaderboard = (): ReactElement => {
-	var players = TestPlayers;
-	players.sort((a, b) => {
-		return b.elo - a.elo;
-	});
+interface LeadboardTableProps {
+	players: Player[];
+}
 
+const LeaderboardTable: React.FC<LeadboardTableProps> = ({ players }) => {
 	return (
 		<TableContainer component={Paper}>
 			<Table aria-label="min tabell">
@@ -46,4 +43,4 @@ const Leaderboard = (): ReactElement => {
 	);
 };
 
-export default Leaderboard;
+export default LeaderboardTable;

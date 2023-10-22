@@ -14,12 +14,12 @@ const Homepage = () => {
 				<Tile
 					imageLink="Oretile.png"
 					text="Register game"
-					routing="/leaderboard"
+					routing="/registergame"
 				/>
 				<Tile
 					imageLink="Wheattile.png"
 					text="Leaderboard"
-					routing="/registergame"
+					routing="/leaderboard"
 				/>
 				<Tile
 					imageLink="Woodtile.png"
