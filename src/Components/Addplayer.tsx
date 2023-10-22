@@ -59,7 +59,12 @@ const AddPlayer = ({
 			<label>
 				Antall poeng:
 				<input
-					style={{ marginLeft: "10px" }}
+					style={{
+						marginLeft: "10px",
+						fontSize: "3rem",
+						width: "70px",
+						textAlign: "center",
+					}}
 					type="number"
 					onChange={(e) => onScoreChange(parseInt(e.target.value))}
 				/>

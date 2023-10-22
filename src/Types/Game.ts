@@ -3,7 +3,7 @@ import Player from "./Player";
 type Game = {
 	numberofplayers: number;
 	date: Date;
-	result: Array<[player: Player, points: number]>;
+	result: Array<{ spiller: Player; poeng: number }>;
 };
 
 export default Game;

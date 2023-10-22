@@ -5,9 +5,13 @@ import { useState } from "react";
 import ValidateGame from "../Validators/ValidateGame";
 import usePlayers from "../Hooks/usePlayers";
 
+import GameBuilder from "../HelpFunctions/GameBuilder";
+import makeGamePromise from "../firebase/makeGamePromise";
+
 const RegisterGame = () => {
-	const [game, setGame] = React.useState<Game>();
 	const [numberOfPlayers, setNumberOfPlayers] = React.useState<number>(4);
+
+	const [sent, setSent] = useState(false);
 
 	const defaultPlayerData = Array.from(Array(numberOfPlayers).keys()).map(
 		(i) => ({
@@ -19,12 +23,24 @@ const RegisterGame = () => {
 	const players = usePlayers();
 	const [playerData, setPlayerData] = useState(defaultPlayerData);
 
-	const handleGameSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleGameSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (ValidateGame(playerData, players.players)) {
-			console.log("Valid game");
+			const newGame: Game = GameBuilder(
+				numberOfPlayers,
+				playerData,
+				players.players
+			);
+			try {
+				await makeGamePromise(newGame);
+				setSent(true);
+			} catch (e) {
+				console.error("Error in sending game to database: ", e);
+			}
 		} else {
-			console.log("Invalid game. Make sure ");
+			alert(
+				"Det skjedde en feil i registrering av spillet. Venligst dobbelsjekk at alle feltene er fylt ut riktig."
+			);
 		}
 	};
 
@@ -53,7 +69,7 @@ const RegisterGame = () => {
 	}, [numberOfPlayers]);
 
 	return (
-		<>
+		<div>
 			<div
 				className="radiobuttons"
 				style={{
@@ -86,7 +102,6 @@ const RegisterGame = () => {
 			</div>
 			<br></br>
 			<br></br>
-
 			<form onSubmit={handleGameSubmit}>
 				{Array.from(Array(numberOfPlayers).keys()).map((i) => (
 					<>
@@ -100,9 +115,16 @@ const RegisterGame = () => {
 						<br></br>
 					</>
 				))}
-				<button type="submit">Registrer spill</button>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "center",
+					}}
+				>
+					<button type="submit">Registrer spill</button>
+				</div>
 			</form>
-		</>
+		</div>
 	);
 };
 
