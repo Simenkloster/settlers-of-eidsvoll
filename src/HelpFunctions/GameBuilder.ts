@@ -9,7 +9,7 @@ const GameBuilder = (
 ): Game => {
 	return {
 		numberofplayers: numberofplayers,
-		date: new Date(Date.now()),
+		date: new Date(Date.now()).toISOString(),
 		result: result.map((player) => {
 			return {
 				spiller: StringToPlayer(player.spiller, players),

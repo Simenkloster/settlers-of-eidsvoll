@@ -1,14 +1,12 @@
 import "./App.css";
 import Homepage from "./Pages/Homepage";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./theme";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
 import Statistics from "./Pages/Statistics";
 import RegisterGame from "./Pages/RegisterGame";
 import Leaderboard from "./Pages/Leaderboard";
 import GameHistory from "./Pages/GameHistory";
-import Settings from "./Pages/Settings";
+import AddPlayerPage from "./Pages/AddPlayerPage";
 
 const App: React.FC = () => {
 	return (
@@ -23,7 +21,7 @@ const App: React.FC = () => {
 					<Route path="/registergame" Component={RegisterGame} />
 					<Route path="/leaderboard" Component={Leaderboard} />
 					<Route path="/gamehistory" Component={GameHistory} />
-					<Route path="/settings" Component={Settings} />
+					<Route path="/addplayer" Component={AddPlayerPage} />
 				</Routes>
 			</Router>
 		</>

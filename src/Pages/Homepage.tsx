@@ -26,7 +26,11 @@ const Homepage = () => {
 					text="Game History"
 					routing="/gamehistory"
 				/>
-				<Tile imageLink="Bricktile.png" text="Settings" routing="/settings" />
+				<Tile
+					imageLink="Bricktile.png"
+					text="Add new player"
+					routing="/addplayer"
+				/>
 			</div>
 		</>
 	);

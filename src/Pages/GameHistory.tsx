@@ -1,7 +1,19 @@
 import React from "react";
+import GameCard from "../Components/GameCard";
+import useGames from "../Hooks/useGames";
 
 const GameHistory = () => {
-	return <div>GameHistory</div>;
+	const games = useGames();
+
+	console.log(games);
+
+	return (
+		<div>
+			{games.games.map((game) => (
+				<GameCard game={game} />
+			))}
+		</div>
+	);
 };
 
 export default GameHistory;
