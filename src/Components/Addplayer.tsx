@@ -19,7 +19,6 @@ const AddPlayer = ({
 	const handleTextInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setTextFieldValue(e.target.value);
 		onPlayerChange(e.target.value);
-		console.log(e.target.value);
 	};
 
 	return (

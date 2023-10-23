@@ -4,12 +4,21 @@ import AddPlayer from "../Components/Addplayer";
 import { useState } from "react";
 import ValidateGame from "../Validators/ValidateGame";
 import usePlayers from "../Hooks/usePlayers";
-
+import { useNavigate } from "react-router-dom";
 import GameBuilder from "../HelpFunctions/GameBuilder";
 import makeGamePromise from "../firebase/makeGamePromise";
+import SuccessModal from "../Components/SuccessModal";
 
 const RegisterGame = () => {
+	const [game, setGame] = useState<Game>();
 	const [numberOfPlayers, setNumberOfPlayers] = React.useState<number>(4);
+	const navigvate = useNavigate();
+	const [modalOpen, setModalOpen] = useState(false);
+	const handleOpen = () => setModalOpen(true);
+	const handleClose = () => {
+		setModalOpen(false);
+		navigvate("/");
+	};
 
 	const [sent, setSent] = useState(false);
 
@@ -34,6 +43,8 @@ const RegisterGame = () => {
 			try {
 				await makeGamePromise(newGame);
 				setSent(true);
+				setGame(newGame);
+				handleOpen();
 			} catch (e) {
 				console.error("Error in sending game to database: ", e);
 			}
@@ -124,6 +135,13 @@ const RegisterGame = () => {
 					<button type="submit">Registrer spill</button>
 				</div>
 			</form>
+			{sent && (
+				<SuccessModal
+					open={modalOpen}
+					handleClose={handleClose}
+					game={game as Game}
+				/>
+			)}
 		</div>
 	);
 };

@@ -1,5 +1,6 @@
 import LeaderboardTable from "../Components/LeaderboardTable";
 import usePlayers from "../Hooks/usePlayers";
+import "./Leaderboard.css";
 
 const Leaderboard = () => {
 	const { players, isLoading } = usePlayers();
