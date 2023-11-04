@@ -75,6 +75,13 @@ const GameCard = ({ game }: GameCardProps) => {
 						alt="firerterning"
 					/>
 				)}{" "}
+				{game.numberofplayers == 3 && (
+					<img
+						style={{ width: "30px", height: "29px" }}
+						src="/threedice.png"
+						alt="firerterning"
+					/>
+				)}{" "}
 				Players
 			</div>
 		</div>
