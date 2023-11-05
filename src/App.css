@@ -3,6 +3,11 @@
 	src: url("./Fonts/Vollkorn_SC/VollkornSC-Regular.ttf") format("truetype");
 }
 
+@font-face {
+	font-family: "VollkornSC-Bold";
+	src: url("./Fonts/Vollkorn_SC/VollkornSC-Bold.ttf") format("truetype");
+}
+
 body {
 	background-image: url(".././public/bakgrunn.png");
 	background-size: 100vw;

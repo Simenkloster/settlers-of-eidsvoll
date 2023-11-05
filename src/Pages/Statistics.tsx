@@ -10,12 +10,22 @@ const Statistics = () => {
 	return (
 		<div>
 			{games.isLoading || players.isLoading ? (
-				<div>Loading</div>
+				<div
+					style={{
+						display: "flex",
+						flexDirection: "row",
+						alignItems: "center",
+						justifyContent: "center",
+						fontSize: "5rem",
+					}}
+				>
+					Loading stats...
+				</div>
 			) : (
 				<div
 					style={{
 						display: "flex",
-						flexDirection: "column",
+						flexDirection: "row",
 						justifyContent: "center",
 						alignItems: "center",
 					}}

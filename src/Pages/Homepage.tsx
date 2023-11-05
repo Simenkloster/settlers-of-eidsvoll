@@ -1,5 +1,4 @@
 import "./Homepage.css";
-import Header from "../Components/Header";
 import Tile from "../Components/Tile";
 
 const Homepage = () => {
@@ -8,7 +7,7 @@ const Homepage = () => {
 			<div className="TileContainer">
 				<Tile
 					imageLink="Sheeptile.png"
-					text="Statistics"
+					text="Møt spillerne"
 					routing="/statistics"
 				/>
 				<Tile
