@@ -1,4 +1,3 @@
-import React from "react";
 import PlayerstatisticsCard from "../Components/PlayerstatisticCard";
 import useGames from "../Hooks/useGames";
 import usePlayers from "../Hooks/usePlayers";

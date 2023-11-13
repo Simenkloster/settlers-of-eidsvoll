@@ -1,4 +1,3 @@
-import usePlayers from "../Hooks/usePlayers";
 import Player from "../Types/Player";
 
 const StringToPlayer = (string: string, players: Player[]): Player => {

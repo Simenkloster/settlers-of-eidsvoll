@@ -5,7 +5,8 @@ import StringToPlayer from "./StringToPlayer";
 const GameBuilder = (
 	numberofplayers: number,
 	result: Array<{ spiller: string; poeng: number }>,
-	players: Player[]
+	players: Player[],
+	ranked: boolean
 ): Game => {
 	return {
 		numberofplayers: numberofplayers,
@@ -16,6 +17,7 @@ const GameBuilder = (
 				poeng: player.poeng,
 			};
 		}),
+		ranked: ranked,
 	};
 };
 

@@ -1,6 +1,5 @@
 import HomeIcon from "@mui/icons-material/Home";
-import { Box, Modal, Typography } from "@mui/material";
-import { useEffect } from "react";
+import { Box, Modal } from "@mui/material";
 import Game from "../Types/Game";
 import { CalculateNewElos } from "../HelpFunctions/CalculateNewElos";
 import updatePlayerElo from "../firebase/updatePlayerElo";
@@ -37,24 +36,45 @@ const SuccessModal = ({ open, handleClose, game }: SuccessModalProps) => {
 	const playersWitnewElos = CalculateNewElos(game);
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		async function postNewElos() {
-			for (const player of playersWitnewElos) {
-				try {
-					await updatePlayerElo(player, player.elo);
-					console.log("Player elo updated");
-				} catch (error) {
-					console.log("Error updating player elo");
-				}
+	async function postNewElosToFirebase() {
+		for (const player of playersWitnewElos) {
+			try {
+				await updatePlayerElo(player, player.elo);
+				console.log("Player elo updated");
+			} catch (error) {
+				console.log("Error updating player elo");
 			}
 		}
-		postNewElos();
-	}, []);
+	}
+
+	if (game.ranked == true) {
+		postNewElosToFirebase();
+	}
+
+	// useEffect(() => {
+	// 	async function postNewElos() {
+	// 		for (const player of playersWitnewElos) {
+	// 			try {
+	// 				await updatePlayerElo(player, player.elo);
+	// 				console.log("Player elo updated");
+	// 			} catch (error) {
+	// 				console.log("Error updating player elo");
+	// 			}
+	// 		}
+	// 	}
+	// 	postNewElos();
+	// }, []);
 
 	return (
 		<Modal open={open} onClose={handleClose}>
 			<Box sx={style}>
-				<h1>Spillet ble registrert!</h1>
+				{game.ranked && <h1>Spillet ble registrert!</h1>}
+				{!game.ranked && (
+					<h1>
+						Spillet ble registrert som unranked! Her er rating-endringene som
+						ville tatt sted.
+					</h1>
+				)}
 				<div
 					style={{
 						display: "flex",

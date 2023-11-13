@@ -6,7 +6,6 @@ import Rankingtypes from "../Types/RankingTypes";
 import useGames from "../Hooks/useGames";
 import {
 	FormControl,
-	InputLabel,
 	MenuItem,
 	Select,
 	SelectChangeEvent,

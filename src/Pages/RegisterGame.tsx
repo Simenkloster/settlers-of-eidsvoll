@@ -19,6 +19,7 @@ const RegisterGame = () => {
 		setModalOpen(false);
 		navigvate("/");
 	};
+	const [ranked, setRanked] = useState<boolean>(true);
 
 	const [sent, setSent] = useState(false);
 
@@ -29,6 +30,8 @@ const RegisterGame = () => {
 		})
 	);
 
+	console.log(ranked);
+
 	const players = usePlayers();
 	const [playerData, setPlayerData] = useState(defaultPlayerData);
 
@@ -38,7 +41,8 @@ const RegisterGame = () => {
 			const newGame: Game = GameBuilder(
 				numberOfPlayers,
 				playerData,
-				players.players
+				players.players,
+				ranked
 			);
 			try {
 				await makeGamePromise(newGame);
@@ -111,6 +115,7 @@ const RegisterGame = () => {
 					3 players
 				</label>
 			</div>
+
 			<br></br>
 			<br></br>
 			<form onSubmit={handleGameSubmit}>
@@ -126,6 +131,38 @@ const RegisterGame = () => {
 						<br></br>
 					</>
 				))}
+				<div
+					className="radiobuttons"
+					style={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "space-evenly",
+						fontSize: "1.5rem",
+					}}
+				>
+					<label>
+						<input
+							type="radio"
+							value="ranked"
+							checked={ranked === true}
+							onChange={() => setRanked(true)}
+							name="ranked"
+						/>
+						ranked
+					</label>
+					<label>
+						<input
+							type="radio"
+							value="unranked"
+							checked={ranked === false}
+							onChange={() => setRanked(false)}
+							name="ranked"
+						/>
+						unranked
+					</label>
+				</div>{" "}
+				<br></br>
+				<br></br>
 				<div
 					style={{
 						display: "flex",
