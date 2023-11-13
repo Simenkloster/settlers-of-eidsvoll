@@ -15,6 +15,14 @@ const AddPlayerPage = () => {
 				alert("Player already exists");
 				throw new Error("Player already exists");
 			}
+			if (playerName.length < 2) {
+				alert("Player name has to be at least 2 characters long");
+				throw new Error("Player name too short");
+			}
+			if (playerName.length > 25) {
+				alert("Player name has to be less than 25 characters long");
+				throw new Error("Player name too long");
+			}
 			await makePlayerPromise(playerName);
 			setPlayerAdded(true);
 		} catch (e) {
