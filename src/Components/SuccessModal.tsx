@@ -51,20 +51,6 @@ const SuccessModal = ({ open, handleClose, game }: SuccessModalProps) => {
 		postNewElosToFirebase();
 	}
 
-	// useEffect(() => {
-	// 	async function postNewElos() {
-	// 		for (const player of playersWitnewElos) {
-	// 			try {
-	// 				await updatePlayerElo(player, player.elo);
-	// 				console.log("Player elo updated");
-	// 			} catch (error) {
-	// 				console.log("Error updating player elo");
-	// 			}
-	// 		}
-	// 	}
-	// 	postNewElos();
-	// }, []);
-
 	return (
 		<Modal open={open} onClose={handleClose}>
 			<Box sx={style}>

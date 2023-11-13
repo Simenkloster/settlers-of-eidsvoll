@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import GameBuilder from "../HelpFunctions/GameBuilder";
 import makeGamePromise from "../firebase/makeGamePromise";
 import SuccessModal from "../Components/SuccessModal";
+import useTeams from "../Hooks/useTeams";
+import Player from "../Types/Player";
 
 const RegisterGame = () => {
 	const [game, setGame] = useState<Game>();
@@ -30,9 +32,10 @@ const RegisterGame = () => {
 		})
 	);
 
-	console.log(ranked);
-
 	const players = usePlayers();
+
+	const teams = useTeams().teams;
+
 	const [playerData, setPlayerData] = useState(defaultPlayerData);
 
 	const handleGameSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -126,6 +129,7 @@ const RegisterGame = () => {
 							onScoreChange={(score) => handleScoreChange(score, i)}
 							onPlayerChange={(player) => handlePlayerChange(player, i)}
 							players={players.players}
+							teams={teams}
 						/>
 						<br></br>
 						<br></br>

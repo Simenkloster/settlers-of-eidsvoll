@@ -24,4 +24,6 @@ export const playersRef = databaseRef.child("Players");
 
 export const gamesRef = databaseRef.child("Games");
 
+export const teamsRef = databaseRef.child("Teams");
+
 export default firebase;

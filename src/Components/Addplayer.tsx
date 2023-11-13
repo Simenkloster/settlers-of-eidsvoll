@@ -1,18 +1,22 @@
 import Player from "../Types/Player";
 import { Autocomplete } from "@mui/material";
 import { TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Team from "../Types/Team";
+import useTeams from "../Hooks/useTeams";
 
 interface AddPlayerProps {
 	onScoreChange(poeng: number): void;
 	onPlayerChange(spiller: string): void;
 	players: Player[];
+	teams: Team[];
 }
 
 const AddPlayer = ({
 	onScoreChange,
 	onPlayerChange,
 	players,
+	teams,
 }: AddPlayerProps) => {
 	const [textFieldValue, setTextFieldValue] = useState<string>("Select Player");
 
@@ -20,6 +24,10 @@ const AddPlayer = ({
 		setTextFieldValue(e.target.value);
 		onPlayerChange(e.target.value);
 	};
+
+	const names = players
+		.map((player) => player.name)
+		.concat(teams.map((team) => team.teamname));
 
 	return (
 		<div
@@ -39,7 +47,7 @@ const AddPlayer = ({
 						fontFamily: "VollkornSC-Regular",
 						textTransform: "capitalize",
 					}}
-					options={players.map((player) => player.name)}
+					options={names}
 					id="combo-box-demo"
 					onChange={(event, newValue) => {
 						handleTextInputChange({

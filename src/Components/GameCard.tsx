@@ -1,7 +1,6 @@
 import { EmojiEvents } from "@mui/icons-material";
 import Game from "../Types/Game";
 import { TrendingUp } from "@mui/icons-material";
-import { TrendingUp } from "@mui/icons-material";
 import { DensityMediumSharp } from "@mui/icons-material";
 
 interface GameCardProps {
@@ -31,27 +30,6 @@ const GameCard = ({ game }: GameCardProps) => {
 			<div>
 				{" "}
 				Played on <br></br> {game.date.substring(0, game.date.indexOf("T"))}
-				<br></br>
-				<br></br>
-				{game.ranked ? (
-					<div
-						style={{
-							display: "flex",
-							flexDirection: "row",
-							justifyContent: "center",
-							alignItems: "center",
-						}}
-					>
-						<p>Ranked</p>
-						<TrendingUp
-							style={{
-								color: "green",
-							}}
-						/>
-					</div>
-				) : (
-					<p>Unranked</p>
-				)}
 				<br></br>
 				<br></br>
 				{game.ranked ? (
