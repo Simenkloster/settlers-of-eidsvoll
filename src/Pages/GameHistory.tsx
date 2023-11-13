@@ -1,4 +1,3 @@
-import React from "react";
 import GameCard from "../Components/GameCard";
 import useGames from "../Hooks/useGames";
 

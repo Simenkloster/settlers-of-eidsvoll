@@ -1,4 +1,3 @@
-import Player from "../Types/Player";
 import Game from "../Types/Game";
 import { useEffect, useState } from "react";
 import getGames from "../firebase/getGames";
