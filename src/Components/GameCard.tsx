@@ -73,6 +73,7 @@ const GameCard = ({ game }: GameCardProps) => {
 				{result.map((player, index) => {
 					return (
 						<div
+							key={index}
 							style={{
 								display: "grid",
 								gridTemplateColumns: "2fr 3fr",

@@ -2,14 +2,12 @@ import GameCard from "../Components/GameCard";
 import useGames from "../Hooks/useGames";
 
 const GameHistory = () => {
-	const games = useGames();
-
-	console.log(games);
+	const games = useGames().games.slice();
 
 	return (
 		<div>
-			{games.games.map((game) => (
-				<GameCard game={game} />
+			{games.reverse().map((game, index) => (
+				<GameCard key={index} game={game} />
 			))}
 		</div>
 	);
